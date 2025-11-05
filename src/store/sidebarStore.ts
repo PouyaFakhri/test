@@ -1,12 +1,10 @@
 import { create } from "zustand";
-
 interface SidebarState {
   isLeftCollapsed: boolean;
   isRightCollapsed: boolean;
   toggleLeftSidebar: () => void;
   toggleRightSidebar: () => void;
 }
-
 export const useSidebarStore = create<SidebarState>((set) => ({
   isLeftCollapsed: false,
   isRightCollapsed: false,

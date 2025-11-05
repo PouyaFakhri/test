@@ -5,30 +5,24 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../ui/
 import { Languages } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useEffect } from "react";
-import type { Language } from "@/types";
-
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
-  
   useEffect(() => {
-    const currentLang = i18n.language as Language;
+    const currentLang = i18n.language;
     document.documentElement.dir = currentLang === "fa" ? "rtl" : "ltr";
     document.documentElement.lang = currentLang;
   }, [i18n.language]);
-
   const toggleLanguage = () => {
-    const newLang: Language = i18n.language === "fa" ? "en" : "fa";
+    const newLang = i18n.language === "fa" ? "en" : "fa";
     i18n.changeLanguage(newLang);
     localStorage.setItem("i18nextLng", newLang);
    
     document.documentElement.dir = newLang === "fa" ? "rtl" : "ltr";
     document.documentElement.lang = newLang;
   };
-
   const tooltipText = i18n.language === "fa"
     ? "Switch to English"
     : "تغییر به فارسی";
-
   return (
     <TooltipProvider delayDuration={200}>
       <Tooltip>

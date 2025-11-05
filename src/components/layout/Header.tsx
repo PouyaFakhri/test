@@ -1,13 +1,10 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Bell } from "lucide-react";
 import { useTheme } from "next-themes";
 import LanguageSwitcher from "@/components/buttons/LanguageSwitcher";
-
 export default function Header() {
   const { theme, setTheme } = useTheme();
-
   return (
     <header className="fixed top-0 left-0 right-0 h-14 glass border-b border-border/50 z-50 backdrop-blur-xl">
       <div className="flex items-center justify-between h-full px-6">

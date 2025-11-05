@@ -1,5 +1,4 @@
 "use client";
-
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import SkeletonLoading from "@/components/templates/SkeletonLoading";
@@ -7,20 +6,15 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { homeCards, homeFeatures } from "@/constants/home";
-
 export default function HomePage() {
   const { t, ready, i18n } = useTranslation();
   const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
     setMounted(true);
   }, []);
-
   if (!ready || !mounted) return <SkeletonLoading />;
-
   return (
     <div className="space-y-8 animate-fadeIn">
-
       {/* Cards Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {homeCards.map((card, index) => {
@@ -39,7 +33,6 @@ export default function HomePage() {
                   card.gradient
                 )}
               />
-
               <div className="relative z-10">
                 <div
                   className={cn(
@@ -50,7 +43,6 @@ export default function HomePage() {
                 >
                   <Icon className="w-full h-full text-white" />
                 </div>
-
                 <div className="text-center space-y-3">
                   <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300">
                     {t(card.titleKey)}
@@ -73,7 +65,6 @@ export default function HomePage() {
           );
         })}
       </section>
-
       {/* Features Section */}
       <section className="grid md:grid-cols-2 gap-6">
         {homeFeatures.map((feature, index) => {
@@ -96,11 +87,9 @@ export default function HomePage() {
                   {t(feature.titleKey)}
                 </h3>
               </div>
-
               <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">
                 {t(feature.descKey)}
               </p>
-
               <div className="flex gap-2 flex-wrap">
                 {feature.tagKeys.map((key, i) => (
                   <span
@@ -116,7 +105,6 @@ export default function HomePage() {
                   </span>
                 ))}
               </div>
-
               <div
                 className={cn(
                   "w-0 h-0.5 rounded-full transition-all duration-500 group-hover:w-full",

@@ -1,5 +1,4 @@
 import { Sparkles, TrendingUp, Users, Award, Target, Zap } from "lucide-react";
-
 export const homeCards = [
   {
     icon: Sparkles,
@@ -50,7 +49,6 @@ export const homeCards = [
     gradient: "bg-gradient-to-br from-indigo-500/20 to-purple-600/20"
   },
 ];
-
 export const homeFeatures = [
   {
     icon: Target,

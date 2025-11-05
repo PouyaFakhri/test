@@ -1,7 +1,5 @@
 import { Bell, MessageSquare, HelpCircle, Settings } from "lucide-react";
-import type { NavigationItem } from "@/types";
-
-export const rightSidebarItems: NavigationItem[] = [
+export const rightSidebarItems = [
   {
     href: "/notifications",
     labelKey: "sidebar.notifications",

@@ -4,15 +4,12 @@ import { useThemeMode } from "@/hooks/useTheme";
 import { Sun, Moon } from "lucide-react";
 import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "../ui/tooltip";
 import { cn } from "@/lib/utils";
-
 export function ThemeToggleButton() {
   const { t } = useTranslation();
   const { mode, toggle, isMounted } = useThemeMode();
-  
   const tooltipText = mode === "dark"
     ? t("theme.switch_to_light")
     : t("theme.switch_to_dark");
-
   if (!isMounted) {
     return (
       <button
@@ -24,7 +21,6 @@ export function ThemeToggleButton() {
       </button>
     );
   }
-
   return (
     <TooltipProvider delayDuration={200}>
       <Tooltip>
@@ -41,6 +37,7 @@ export function ThemeToggleButton() {
             )}
             aria-label={tooltipText}
           >
+            {/* Background Glow */}
             <div className={cn(
               "absolute inset-0 transition-opacity duration-500",
               mode === "dark"
@@ -48,6 +45,7 @@ export function ThemeToggleButton() {
                 : "bg-gradient-to-br from-indigo-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100"
             )} />
            
+            {/* Icons */}
             <div className="relative w-5 h-5">
               <Sun className={cn(
                 "absolute inset-0 w-5 h-5 text-yellow-500 transition-all duration-500",

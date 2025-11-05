@@ -1,7 +1,6 @@
-import { Home, BarChart3, Users, FileText, Settings } from "lucide-react";
-import type { NavigationItem } from "@/types";
 
-export const leftSidebarItems: NavigationItem[] = [
+import { Home, BarChart3, Users, FileText, Settings } from "lucide-react";
+export const leftSidebarItems = [
   {
     href: "/",
     labelKey: "sidebar.home",

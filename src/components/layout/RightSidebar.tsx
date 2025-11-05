@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebarStore } from "@/store/sidebarStore";
@@ -10,13 +9,11 @@ import { useTranslation } from "react-i18next";
 import { PanelRightClose, PanelRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { rightSidebarItems } from "@/constants/rightSidebar";
-
 export default function RightSidebar() {
   const { t, i18n } = useTranslation();
   const pathname = usePathname();
   const { isRightCollapsed, toggleRightSidebar } = useSidebarStore();
   const isRTL = i18n.language === "fa";
-
   return (
     <aside
       className={cn(
@@ -31,7 +28,6 @@ export default function RightSidebar() {
           {rightSidebarItems.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
-
             return (
               <TooltipProvider key={item.href} delayDuration={200}>
                 <Tooltip>
@@ -40,7 +36,7 @@ export default function RightSidebar() {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "w-full h-10 cursor-pointer transition-all duration-300 relative group",
+                          "w-full h-10 transition-all duration-300 relative group",
                           "hover:bg-accent/10 hover:text-accent",
                           isActive && "bg-accent/15 text-accent font-semibold",
                           isRightCollapsed
@@ -59,16 +55,14 @@ export default function RightSidebar() {
                             )}
                           />
                         )}
-
                         {/* Icon */}
                         <Icon
                           className={cn(
-                            "w-5 h-5 shrink-0 cursor-pointer transition-transform duration-300",
+                            "w-5 h-5 shrink-0 transition-transform duration-300",
                             "group-hover:scale-110",
                             isActive && "text-accent"
                           )}
                         />
-
                         {/* Label */}
                         {!isRightCollapsed && (
                           <span
@@ -80,7 +74,6 @@ export default function RightSidebar() {
                             {t(item.labelKey)}
                           </span>
                         )}
-
                         {/* Background highlight */}
                         {isActive && (
                           <div className="absolute inset-0 bg-accent/5 rounded-lg -z-10" />
@@ -88,7 +81,6 @@ export default function RightSidebar() {
                       </Button>
                     </Link>
                   </TooltipTrigger>
-
                   {/* Tooltip for collapsed mode */}
                   {isRightCollapsed && (
                     <TooltipContent
@@ -105,7 +97,6 @@ export default function RightSidebar() {
           })}
         </nav>
       </ScrollArea>
-
       {/* Toggle button */}
       <div className="p-3 border-t border-border/50">
         <TooltipProvider delayDuration={200}>

@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSidebarStore } from "@/store/sidebarStore";
@@ -15,12 +14,10 @@ import { useTranslation } from "react-i18next";
 import { PanelLeftClose, PanelLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { leftSidebarItems } from "@/constants/leftSidebar";
-
 export default function LeftSidebar() {
   const { t } = useTranslation();
   const pathname = usePathname();
   const { isLeftCollapsed, toggleLeftSidebar } = useSidebarStore();
-
   return (
     <aside
       className={cn(
@@ -35,7 +32,6 @@ export default function LeftSidebar() {
           {leftSidebarItems.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
-
             return (
               <TooltipProvider key={item.href} delayDuration={200}>
                 <Tooltip>
@@ -44,7 +40,7 @@ export default function LeftSidebar() {
                       <Button
                         variant="ghost"
                         className={cn(
-                          "w-full cursor-pointer justify-start gap-3 relative group transition-all duration-300",
+                          "w-full justify-start gap-3 relative group transition-all duration-300",
                           "hover:bg-primary/10 hover:text-primary",
                           isActive && "bg-primary/15 text-primary font-semibold",
                           isLeftCollapsed && "justify-center px-2"
@@ -54,7 +50,6 @@ export default function LeftSidebar() {
                         {isActive && (
                           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full" />
                         )}
-
                         {/* Icon */}
                         <Icon
                           className={cn(
@@ -62,14 +57,12 @@ export default function LeftSidebar() {
                             isActive && "text-primary"
                           )}
                         />
-
                         {/* Label */}
                         {!isLeftCollapsed && (
                           <span className="transition-opacity duration-300 text-sm">
                             {t(item.labelKey)}
                           </span>
                         )}
-
                         {/* Background effect */}
                         {isActive && (
                           <div className="absolute inset-0 bg-primary/5 rounded-lg -z-10" />
@@ -77,7 +70,6 @@ export default function LeftSidebar() {
                       </Button>
                     </Link>
                   </TooltipTrigger>
-
                   {/* Tooltip when collapsed */}
                   {isLeftCollapsed && (
                     <TooltipContent
@@ -94,7 +86,6 @@ export default function LeftSidebar() {
           })}
         </nav>
       </ScrollArea>
-
       {/* Toggle button */}
       <div className="p-3 border-t border-border/50">
         <TooltipProvider delayDuration={200}>
@@ -109,7 +100,7 @@ export default function LeftSidebar() {
                   "hover:bg-primary/10 hover:text-primary"
                 )}
               >
-                <div className="absolute inset-0 bg-linear-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 {isLeftCollapsed ? (
                   <PanelLeft className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
                 ) : (

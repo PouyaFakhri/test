@@ -1,5 +1,4 @@
 import { Skeleton } from "@/components/ui/skeleton";
-
 export default function SkeletonLoading() {
   return (
     <div className="flex items-center justify-center min-h-screen p-6 bg-background/95">
@@ -12,7 +11,6 @@ export default function SkeletonLoading() {
             <Skeleton className="h-12 w-36 rounded-xl" />
           </div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[...Array(6)].map((_, i) => (
             <div key={i} className="neo p-6 rounded-xl space-y-4" style={{ animationDelay: `${i * 100}ms` }}>
